@@ -102,6 +102,17 @@ function movePaddle() {
     }
 }
 
+// Move ball on canvas
+function moveBall() {
+    ball.x += ball.dx;
+    ball.y += ball.dy;
+
+    // Wall collision (x)
+    if (ball.x + ball.size > canvas.width || ball.x - ball.size < 0) {
+        ball.dx *= -1; // ball.dx = ball.dx * -1 // reverse it the other way
+    }
+}
+
 // Draw everything
 function draw() {
     // Clear canvas
@@ -116,6 +127,7 @@ function draw() {
 // Update canvas drawing and animation
 function update() {
     movePaddle();
+    moveBall();
 
     // Draw everything
     draw();
